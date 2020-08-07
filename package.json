@@ -1,0 +1,23 @@
+{
+  "name": "image-carousel",
+  "version": "1.0.0",
+  "description": "javascript library to create image carousel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ujw0l/pic-crop.git"
+  },
+  "keywords": [
+    "image-carousel",
+    "carousel"
+  ],
+  "author": "ujw0l",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ujw0l/pic-crop/issues"
+  },
+  "homepage": "https://github.com/ujw0l/pic-crop#readme"
+}
