@@ -12,17 +12,33 @@
   <a href="https://github.com/ujw0l/pic-crop/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/github/license/ujw0l/image-carousel" />
   </a>
+  <a href="https://twitter.com/bastakotiujwol" target="_blank">
+    <img alt="Twitter: bastakotiujwol" src="https://img.shields.io/twitter/follow/bastakotiujwol.svg?style=social" />
+  </a>
 </p>
 
-> javascript library to create image carousel
+> JS library to create image carousel
 
 ### 🏠 [Homepage](https://github.com/ujw0l/pic-crop#readme)
+
+## Install
+
+```sh
+npm install image-carousel
+```
+
+## Run tests
+
+```sh
+npm run test
+```
 
 ## Author
 
 👤 **ujw0l**
 
 * Website: http://ujw0l.github.io
+* Twitter: [@bastakotiujwol](https://twitter.com/bastakotiujwol)
 * Github: [@ujw0l](https://github.com/ujw0l)
 
 ## 🤝 Contributing
@@ -32,6 +48,10 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+
+<a href="https://www.patreon.com/ujw0l">
+  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
 
 ## 📝 License
 
