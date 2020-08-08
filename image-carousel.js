@@ -102,16 +102,17 @@ class imageCarousel{
        
 
         carDivs.prevTwo.style.backgroundImage = `url('${gal[prevTwoNum ].src}')`; 
-        carDivs.prevTwo.title = undefined != gal[prevTwoNum].getAttribute('title') ? gal[prevTwoNum].getAttribute('title'):'';
+        carDivs.prevTwo.title = undefined != gal[prevTwoNum].title ? gal[prevTwoNum].title:'';
         carDivs.prevTwo.setAttribute('data-num',prevTwoNum)
 
         carDivs.prevOne.style.backgroundImage = `url('${gal[prevOneNum].src}')`; 
-        carDivs.prevOne.title = undefined != gal[prevOneNum].getAttribute('title') ? gal[prevOneNum].getAttribute('title'):'';
+        carDivs.prevOne.title = undefined != gal[prevOneNum].title ? gal[prevOneNum].title:'';
         carDivs.prevOne.setAttribute('data-num',prevOneNum)  
-
 
         let mainImg = new Image();
             mainImg.src  = gal[i].src;
+            mainImg.title =  undefined != gal[i].title ? gal[i].title:''; 
+
 
 
         let loadingDivCir=   carDivs.mainDiv.querySelector('#img-loading-'+galNum); 
@@ -119,7 +120,6 @@ class imageCarousel{
        
          if(null == loadingDivCir){
                     
-            console.log('aye');
                 loadingDivCir =  document.createElement('div');
                 loadingDivCir.id = `img-loading-${galNum}`;
                 loadingDivCir.style = `margin-left:${(carDivs.mainDiv.offsetWidth-40)/2}px;margin-top:${(carDivs.mainDiv.offsetHeight-40)/2}px;height:40px;width:40px;border-radius:50%;border-color:rgba(255,255,255,1);border-style: solid; border-width: 3px;z-index:1100; `;
@@ -151,25 +151,25 @@ class imageCarousel{
                     break;
                 }
                 
-            }, 160);
+            }, 400);
         }
 
+        
         mainImg.addEventListener('load',(event)=>{
             clearInterval(loadingInt);
             carDivs.mainDiv.removeChild(loadingDivCir)
-            carDivs.mainDiv.style.backgroundImage = `url('${event.target.src}')`; 
-            let mainImgTitle =  gal[prevOneNum].getAttribute('title')
-          
+            carDivs.mainDiv.style.backgroundImage = `url('${event.target.src}')`;
+            carDivs.mainDiv.title = undefined != event.target.title ? event.target.title:'';
          })   
        
 
 
         carDivs.nextOne.style.backgroundImage = `url('${gal[nextOneNum].src}')`; 
-        carDivs.nextOne.title = undefined != gal[nextOneNum].getAttribute('title') ? gal[nextOneNum].getAttribute('title'):'';
+        carDivs.nextOne.title = undefined != gal[nextOneNum].title ? gal[nextOneNum].title:'';
         carDivs.nextOne.setAttribute('data-num',nextOneNum)
 
         carDivs.nextTwo.style.backgroundImage = `url('${gal[nextTwoNum].src}')`; 
-        carDivs.nextTwo.title =  undefined != gal[nextTwoNum].getAttribute('title') ? gal[nextTwoNum].getAttribute('title'):'';
+        carDivs.nextTwo.title =  undefined != gal[nextTwoNum].title ? gal[nextTwoNum].title:'';
         carDivs.nextTwo.setAttribute('data-num',nextTwoNum) 
         
     }
@@ -207,7 +207,6 @@ adjustOnResize(gal, carDivObj,galNum){
             mainDiv.style.marginLeft =  `${0.15*maxWidth}px`;
 
          let loadingDiv =   mainDiv.querySelector('#img-loading-'+galNum); 
-         console.log(loadingDiv);
               if(undefined != loadingDiv){
                 loadingDiv.style.marginLeft = `${(mainDiv.offsetWidth-40)/2}px`;
                 loadingDiv.style.marginTop = `${(mainDiv.offsetHeight-40)/2}px`;
