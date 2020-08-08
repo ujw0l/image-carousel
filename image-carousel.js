@@ -3,17 +3,18 @@ class imageCarousel{
     constructor(sel,param1){
    
         const gals  = Array.from(document.querySelectorAll(sel));
-        gals.map(x=>this.prepCarousel(x ,param1))
+        gals.map((x,i)=>this.prepCarousel(x , i, param1))
     }
 
 /*
 * Prepare carousel 
 *
 *@param gal Image gallery object
+*@param galNum gallery number
 *@param param1 Additional settings for carousel
 *
 */
-    prepCarousel(gal,param1){
+    prepCarousel(gal,galNum,param1){
 
       
         let maxWidth = gal.offsetWidth;
@@ -38,7 +39,7 @@ class imageCarousel{
              carDivsObj.prevOne = prevOneDiv;
              gal.appendChild( prevOneDiv);
          
-             let mainDiv =  document.createElement('div');
+        let mainDiv =  document.createElement('div');
              mainDiv.id = `car-main-div`;
              mainDiv.style = `width:${0.7*maxWidth}px;height:${maxHeight}px;z-index:1000;display:inline-block;position:absolute;margin-top:0px;margin-left:${0.15*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:contain;`;
              carDivsObj.mainDiv=mainDiv;
@@ -57,7 +58,7 @@ class imageCarousel{
             gal.appendChild( nextTwoDiv);
 
 
-            this.createCarousel(0,imgs,carDivsObj,param1);
+            this.createCarousel(0,imgs,carDivsObj,galNum,param1);
 
         
             prevTwoDiv.addEventListener('click', event=>this.createCarousel(parseInt(event.target.getAttribute('data-num')), imgs, carDivsObj,param1 ));
@@ -65,7 +66,7 @@ class imageCarousel{
             nextOneDiv.addEventListener('click', event=>this.createCarousel(parseInt(event.target.getAttribute('data-num')), imgs, carDivsObj,param1 ));
             nextTwoDiv.addEventListener('click', event=>this.createCarousel(parseInt(event.target.getAttribute('data-num')), imgs, carDivsObj,param1 ));
 
-            window.addEventListener('resize', ()=>this.adjustOnResize(gal, carDivsObj)) 
+            window.addEventListener('resize', ()=>this.adjustOnResize(gal, carDivsObj,galNum)) 
     }
 /*
 * Create carousel 
@@ -76,7 +77,7 @@ class imageCarousel{
 *@param param1 Additional settings for carousel
 *
 */
-    createCarousel(i,gal,carDivs, param1){
+    createCarousel(i,gal,carDivs, galNum, param1){
 
 
         let prevTwoNum ; ;
@@ -108,9 +109,59 @@ class imageCarousel{
         carDivs.prevOne.title = undefined != gal[prevOneNum].getAttribute('title') ? gal[prevOneNum].getAttribute('title'):'';
         carDivs.prevOne.setAttribute('data-num',prevOneNum)  
 
-        carDivs.mainDiv.style.backgroundImage = `url('${gal[i].src}')`; 
-        let mainImgTitle =  gal[prevOneNum].getAttribute('title')
-       // if(undefined != )
+
+        let mainImg = new Image();
+            mainImg.src  = gal[i].src;
+
+
+        let loadingDivCir=   carDivs.mainDiv.querySelector('#img-loading-'+galNum); 
+
+       
+         if(null == loadingDivCir){
+                    
+            console.log('aye');
+                loadingDivCir =  document.createElement('div');
+                loadingDivCir.id = `img-loading-${galNum}`;
+                loadingDivCir.style = `margin-left:${(carDivs.mainDiv.offsetWidth-40)/2}px;margin-top:${(carDivs.mainDiv.offsetHeight-40)/2}px;height:40px;width:40px;border-radius:50%;border-color:rgba(255,255,255,1);border-style: solid; border-width: 3px;z-index:1100; `;
+                loadingDivCir.setAttribute('data-wait','left');
+                carDivs.mainDiv.appendChild(loadingDivCir);
+
+            var loadingInt = setInterval(()=>{
+                switch( loadingDivCir.getAttribute('data-wait')){
+                    case 'left': 
+                        loadingDivCir.setAttribute('data-wait','top');
+                        loadingDivCir.style.borderColor = 'rgba(255,255,255,0.5)';
+                        loadingDivCir.style.borderTop = '3px solid  rgba(255,255,255,0.8)';
+                    break;
+                    case 'top':
+                            loadingDivCir.setAttribute('data-wait','right');
+                            loadingDivCir.style.borderColor = 'rgba(255,255,255,0.5)';
+                            loadingDivCir.style.borderRight = '3px solid  rgba(255,255,255,0.8)';
+                    break;
+                    case 'right':
+                            loadingDivCir.setAttribute('data-wait','bottom');
+                            loadingDivCir.style.borderColor = 'rgba(255,255,255,0.5)';
+                            loadingDivCir.style.borderBottom = '3px solid  rgba(255,255,255,0.8)';
+
+                    break;
+                    case 'bottom':
+                            loadingDivCir.setAttribute('data-wait','left');
+                            loadingDivCir.style.borderColor = 'rgba(255,255,255,0.5)';
+                            loadingDivCir.style.borderLeft = '3px solid  rgba(255,255,255,0.8)';
+                    break;
+                }
+                
+            }, 160);
+        }
+
+        mainImg.addEventListener('load',(event)=>{
+            clearInterval(loadingInt);
+            carDivs.mainDiv.removeChild(loadingDivCir)
+            carDivs.mainDiv.style.backgroundImage = `url('${event.target.src}')`; 
+            let mainImgTitle =  gal[prevOneNum].getAttribute('title')
+          
+         })   
+       
 
 
         carDivs.nextOne.style.backgroundImage = `url('${gal[nextOneNum].src}')`; 
@@ -130,7 +181,7 @@ class imageCarousel{
 *
 */
 
-adjustOnResize(gal, carDivObj){
+adjustOnResize(gal, carDivObj,galNum){
 
     let maxWidth = gal.offsetWidth;
     let maxHeight = gal.offsetHeight;
@@ -154,6 +205,13 @@ adjustOnResize(gal, carDivObj){
             mainDiv.style.height = `${maxHeight}px`; 
             mainDiv.style.marginTop =  `0px`;
             mainDiv.style.marginLeft =  `${0.15*maxWidth}px`;
+
+         let loadingDiv =   mainDiv.querySelector('#img-loading-'+galNum); 
+         console.log(loadingDiv);
+              if(undefined != loadingDiv){
+                loadingDiv.style.marginLeft = `${(mainDiv.offsetWidth-40)/2}px`;
+                loadingDiv.style.marginTop = `${(mainDiv.offsetHeight-40)/2}px`;
+              }  
 
        
         let nextOneDiv =   carDivObj.nextOne;
