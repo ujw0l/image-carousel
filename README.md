@@ -1,7 +1,7 @@
-<h1 align="center">Welcome to image-carousel 👋</h1>
+<h1 align="center">Welcome to images-carousel 👋</h1>
 <p>
-  <a href="https://www.npmjs.com/package/image-carousel" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/image-carousel.svg">
+  <a href="https://www.npmjs.com/package/images-carousel" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/images-carousel.svg">
   </a>
   <a href="https://github.com/ujw0l/pic-crop#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -24,13 +24,21 @@
 ## Install
 
 ```sh
-npm install image-carousel
+npm install images-carousel
 ```
 
-## Run tests
+## Script 
 
 ```sh
-npm run test
+Download and include file
+image-carousel.js
+
+```
+
+## initialize
+
+```sh
+ new imageCarousel(selector/s);
 ```
 
 ## Author
