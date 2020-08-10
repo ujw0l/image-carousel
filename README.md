@@ -19,7 +19,7 @@
 
 > JS library to create image carousel
 
-### 🏠 [Homepage](https://github.com/ujw0l/image-carousel#readme)
+### 🏠 [Homepage](https://ujw0l.github.io/image-carousel/)
 
 ## Install
 
@@ -38,7 +38,7 @@ image-carousel.js
 ## initialize
 
 ```sh
- new imageCarousel(selector/s);
+ new imageCarousel(selector/s,{callBack : function});
 ```
 
 ## Author
