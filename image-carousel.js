@@ -1,18 +1,29 @@
+/*
+ * 
+ * 
+ * 
+ * Image carousel
+ *  Images  carousel library written in vanilla js
+ * https://ujwolbastakoti.wordpress.com/
+ * MIT license
+ * 
+ * 
+ * 
+ */
 
 class imageCarousel{
     constructor(sel,param1){
-   
         Array.from(document.querySelectorAll(sel)).map((x,i)=>this.prepCarousel(x , i, param1))
     }
 
-/*
-* Prepare carousel 
-*
-*@param gal Image gallery object
-*@param galNum gallery number
-*@param param1 Additional settings for carousel
-*
-*/
+    /*
+    * Prepare carousel 
+    *
+    *@param gal Image gallery object
+    *@param galNum gallery number
+    *@param param1 Additional settings for carousel
+    *
+    */
     prepCarousel(gal,galNum,param1){ 
 
       
@@ -25,38 +36,38 @@ class imageCarousel{
         imgs.map((x,i)=>x.style.display ='none')
          
         let prevThreeDiv =  document.createElement('div');
-             prevThreeDiv.style = `width:${(0.42)*maxWidth}px;height:${0.7*maxHeight}px;z-index:400;display:inline-block;position:absolute;margin-top:${0.15*maxHeight}px;margin-left:0px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 4px grey;`;
+             prevThreeDiv.style = `width:${(0.42)*maxWidth}px;height:${0.7*maxHeight}px;z-index:400;display:inline-block;position:absolute;margin-top:${0.15*maxHeight}px;margin-left:0px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 2px black;`;
              carDivsObj.prevThree = prevThreeDiv,
              gal.appendChild( prevThreeDiv);
 
         let prevTwoDiv =  document.createElement('div');
-             prevTwoDiv.style = `width:${(0.49)*maxWidth}px;height:${0.8*maxHeight}px;z-index:500;display:inline-block;position:absolute;margin-top:${0.1*maxHeight}px;margin-left:${0.06*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 4px grey;`;
+             prevTwoDiv.style = `width:${(0.49)*maxWidth}px;height:${0.8*maxHeight}px;z-index:500;display:inline-block;position:absolute;margin-top:${0.1*maxHeight}px;margin-left:${0.06*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 10px 15px 2px black;`;
              carDivsObj.prevTwo = prevTwoDiv,
              gal.appendChild( prevTwoDiv);
 
         let prevOneDiv =  document.createElement('div');
-             prevOneDiv.style = `width:${(0.63)*maxWidth}px;height:${0.9*maxHeight}px;z-index:700;display:inline-block;position:absolute;margin-top:${0.05*maxHeight}px;margin-left:${0.14*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 4px grey;`;
+             prevOneDiv.style = `width:${(0.63)*maxWidth}px;height:${0.9*maxHeight}px;z-index:700;display:inline-block;position:absolute;margin-top:${0.05*maxHeight}px;margin-left:${0.14*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 15px 20px 2px black;`;
              carDivsObj.prevOne = prevOneDiv;  
              gal.appendChild( prevOneDiv);
          
         let mainDiv =  document.createElement('div');
-             mainDiv.style = `width:${0.52*maxWidth}px;height:${maxHeight}px;z-index:1000;display:inline-block;position:absolute;margin-top:0px;margin-left:${0.24*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:contain;box-shadow:0px 5px 10px 4px grey;`;
+             mainDiv.style = `width:${0.52*maxWidth}px;height:${maxHeight}px;z-index:1000;display:inline-block;position:absolute;margin-top:0px;margin-left:${0.24*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:contain;box-shadow:0px 20px 25px 2px black;`;
              carDivsObj.mainDiv=mainDiv;
              gal.appendChild( mainDiv);
 
         let nextOneDiv =  document.createElement('div');
-            nextOneDiv.style = `width:${(0.63)*maxWidth}px;height:${0.9*maxHeight}px;z-index:700;display:inline-block;position:absolute;margin-top:${0.05*maxHeight}px;margin-left:${0.24*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 4px grey;`;
+            nextOneDiv.style = `width:${(0.63)*maxWidth}px;height:${0.9*maxHeight}px;z-index:700;display:inline-block;position:absolute;margin-top:${0.05*maxHeight}px;margin-left:${0.24*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 15px 20px 2px black;`;
             carDivsObj.nextOne = nextOneDiv;
             gal.appendChild( nextOneDiv);
 
         let nextTwoDiv =  document.createElement('div');
-            nextTwoDiv.style = `width:${(0.49)*maxWidth}px;height:${0.8*maxHeight}px;z-index:500;display:inline-block;position:absolute;margin-top:${0.1*maxHeight}px;margin-left:${0.45*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 4px grey;`;
+            nextTwoDiv.style = `width:${(0.49)*maxWidth}px;height:${0.8*maxHeight}px;z-index:500;display:inline-block;position:absolute;margin-top:${0.1*maxHeight}px;margin-left:${0.45*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 10px 15px 2px black;`;
             carDivsObj.nextTwo=nextTwoDiv;
             gal.appendChild( nextTwoDiv);
 
 
         let nextThreeDiv =  document.createElement('div');
-            nextThreeDiv.style = `width:${(0.42)*maxWidth}px;height:${0.7*maxHeight}px;z-index:400;display:inline-block;position:absolute;margin-top:${0.15*maxHeight}px;margin-left:${0.58*maxWidth};background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 4px grey;`;
+            nextThreeDiv.style = `width:${(0.42)*maxWidth}px;height:${0.7*maxHeight}px;z-index:400;display:inline-block;position:absolute;margin-top:${0.15*maxHeight}px;margin-left:${0.58*maxWidth};background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 2px black;`;
             carDivsObj.nextThree = nextThreeDiv,
             gal.appendChild( nextThreeDiv);    
 
@@ -66,21 +77,29 @@ class imageCarousel{
             for (let i in carDivsObj){
                 if ('mainDiv' != i){
                     carDivsObj[i].addEventListener('click', event=>this.createCarousel(parseInt(event.target.getAttribute('data-num')), imgs, carDivsObj,galNum, param1 ));
+                    carDivsObj[i].addEventListener('mouseenter', event=>event.target.style.border ='1px dotted rgba(0,0,0,0)')
+                    carDivsObj[i].addEventListener('mouseleave', event=>event.target.style.border ='')
                 }
             }
 
+            if(undefined != param1  && 'function' == typeof(param1.callBack)){
+           
+                param1.callBack(gal);
+    
+        } 
+
             window.addEventListener('resize', ()=>this.adjustOnResize(gal, carDivsObj,galNum)) 
     }
-/*
-* Create carousel 
-*
-*@param i Image number
-*@param gal Image gallery object
-*@param carDivs Carousel divs object
-*@param galNum Gallery number
-*@param param1 Additional settings for carousel
-*
-*/
+    /*
+    * Create carousel 
+    *
+    *@param i Image number
+    *@param gal Image gallery object
+    *@param carDivs Carousel divs object
+    *@param galNum Gallery number
+    *@param param1 Additional settings for carousel
+    *
+    */
     createCarousel(i,gal,carDivs, galNum, param1){
 
         let prevThreeNum ; 
@@ -137,7 +156,6 @@ class imageCarousel{
 
         let loadingDivCir=   carDivs.mainDiv.querySelector('#img-loading-'+galNum); 
 
-       console.log(loadingDivCir);
          if(null == loadingDivCir){
                     
                 loadingDivCir =  document.createElement('div');
@@ -176,9 +194,9 @@ class imageCarousel{
 
         
         mainImg.addEventListener('load',(event)=>{
-           // clearInterval(loadingInt);
-            //carDivs.mainDiv.removeChild(loadingDivCir)
-            //carDivs.mainDiv.style.backgroundImage = `url('${event.target.src}')`;
+            clearInterval(loadingInt);
+            carDivs.mainDiv.removeChild(loadingDivCir)
+            carDivs.mainDiv.style.backgroundImage = `url('${event.target.src}')`;
             carDivs.mainDiv.title = undefined != event.target.title ? event.target.title:'';
          })   
        
@@ -186,88 +204,93 @@ class imageCarousel{
 
         carDivs.nextOne.style.backgroundImage = `url('${gal[nextOneNum].src}')`; 
         carDivs.nextOne.title = undefined != gal[nextOneNum].title ? gal[nextOneNum].title:'';
-        carDivs.nextOne.setAttribute('data-num',nextOneNum)
+        carDivs.nextOne.setAttribute('data-num',nextOneNum);
 
         carDivs.nextTwo.style.backgroundImage = `url('${gal[nextTwoNum].src}')`; 
         carDivs.nextTwo.title =  undefined != gal[nextTwoNum].title ? gal[nextTwoNum].title:'';
-        carDivs.nextTwo.setAttribute('data-num',nextTwoNum) 
+        carDivs.nextTwo.setAttribute('data-num',nextTwoNum); 
 
         carDivs.nextThree.style.backgroundImage = `url('${gal[nextThreeNum].src}')`; 
         carDivs.nextThree.title =  undefined != gal[nextThreeNum].title ? gal[nextThreeNum].title:'';
-        carDivs.nextThree.setAttribute('data-num',nextThreeNum) 
+        carDivs.nextThree.setAttribute('data-num',nextThreeNum);
+
+
+
+        
+       
         
     }
 
 
     /*
-* Adjust carousel on resize
-*
-*@param gal Image gallery object
-*@param carDivs Carousel divs object
-*@param param1 Additional settings for carousel
-*
-*/
+    * Adjust carousel on resize
+    *
+    *@param gal Image gallery object
+    *@param carDivs Carousel divs object
+    *@param param1 Additional settings for carousel
+    *
+    */
 
-adjustOnResize(gal, carDivObj,galNum){
+    adjustOnResize(gal, carDivObj,galNum){
 
-    let maxWidth = gal.offsetWidth;
-    let maxHeight = gal.offsetHeight;
-
-
-
-    let prevThreeDiv =  carDivObj.prevThree;
-    prevThreeDiv.style.width = `${(0.42)*maxWidth}px`;
-    prevThreeDiv.style.height = `${0.7*maxHeight}px` ;
-    prevThreeDiv.style.marginTop =  `${0.15*maxHeight}px`;
-    prevThreeDiv.style.marginLeft =  `0px`;
-
-        let prevTwoDiv =  carDivObj.prevTwo;
-            prevTwoDiv.style.width = `${(0.49)*maxWidth}px`;
-            prevTwoDiv.style.height = `${0.8*maxHeight}px` ;
-            prevTwoDiv.style.marginTop =  `${0.1*maxHeight}px`;
-            prevTwoDiv.style.marginLeft =  `${0.06*maxWidth}px`;
-           
-        let prevOneDiv =   carDivObj.prevOne;
-            prevOneDiv.style.width = `${(0.63)*maxWidth}px`;
-            prevOneDiv.style.height = `${0.9*maxHeight}px` ;
-            prevOneDiv.style.marginTop =  `${0.05*maxHeight}px`;
-            prevOneDiv.style.marginLeft =  `${0.14*maxWidth}px`;
-           
-         
-        let mainDiv =   carDivObj.mainDiv;
-            mainDiv.style.width = `${0.52*maxWidth}px`;
-            mainDiv.style.height = `${maxHeight}px`; 
-            mainDiv.style.marginTop =  `0px`;
-            mainDiv.style.marginLeft =  `${0.24*maxWidth}px`;
-
-         let loadingDiv =   mainDiv.querySelector('#img-loading-'+galNum); 
-              if(undefined != loadingDiv){
-                loadingDiv.style.marginLeft = `${(mainDiv.offsetWidth-40)/2}px`;
-                loadingDiv.style.marginTop = `${(mainDiv.offsetHeight-40)/2}px`;
-              }  
-
-       
-        let nextOneDiv =   carDivObj.nextOne;
-            nextOneDiv.style.width = `${(0.63)*maxWidth}px`;
-            nextOneDiv.style.height = `${0.9*maxHeight}px`; 
-            nextOneDiv.style.marginTop =  `${0.05*maxHeight}px`;
-            nextOneDiv.style.marginLeft =  `${0.24*maxWidth}px`;
-         
-        let nextTwoDiv =  carDivObj.nextTwo;
-            nextTwoDiv.style.width = `${(0.49)*maxWidth}px`;
-            nextTwoDiv.style.height = `${0.8*maxHeight}px`; 
-            nextTwoDiv.style.marginTop =  `${0.1*maxHeight}px`;
-            nextTwoDiv.style.marginLeft =  `${0.45*maxWidth}px`;
-
-        let nextThreeDiv =  carDivObj.nextThree;
-            nextThreeDiv.style.width = `${(0.42)*maxWidth}px`;
-            nextThreeDiv.style.height = `${0.7*maxHeight}px`; 
-            nextThreeDiv.style.marginTop =  `${0.15*maxHeight}px`;
-            nextThreeDiv.style.marginLeft =  `${0.58*maxWidth}px`;     
-          
+        let maxWidth = gal.offsetWidth;
+        let maxHeight = gal.offsetHeight;
 
 
-}
+
+        let prevThreeDiv =  carDivObj.prevThree;
+        prevThreeDiv.style.width = `${(0.42)*maxWidth}px`;
+        prevThreeDiv.style.height = `${0.7*maxHeight}px` ;
+        prevThreeDiv.style.marginTop =  `${0.15*maxHeight}px`;
+        prevThreeDiv.style.marginLeft =  `0px`;
+
+            let prevTwoDiv =  carDivObj.prevTwo;
+                prevTwoDiv.style.width = `${(0.49)*maxWidth}px`;
+                prevTwoDiv.style.height = `${0.8*maxHeight}px` ;
+                prevTwoDiv.style.marginTop =  `${0.1*maxHeight}px`;
+                prevTwoDiv.style.marginLeft =  `${0.06*maxWidth}px`;
+            
+            let prevOneDiv =   carDivObj.prevOne;
+                prevOneDiv.style.width = `${(0.63)*maxWidth}px`;
+                prevOneDiv.style.height = `${0.9*maxHeight}px` ;
+                prevOneDiv.style.marginTop =  `${0.05*maxHeight}px`;
+                prevOneDiv.style.marginLeft =  `${0.14*maxWidth}px`;
+            
+            
+            let mainDiv =   carDivObj.mainDiv;
+                mainDiv.style.width = `${0.52*maxWidth}px`;
+                mainDiv.style.height = `${maxHeight}px`; 
+                mainDiv.style.marginTop =  `0px`;
+                mainDiv.style.marginLeft =  `${0.24*maxWidth}px`;
+
+            let loadingDiv =   mainDiv.querySelector('#img-loading-'+galNum); 
+                if(undefined != loadingDiv){
+                    loadingDiv.style.marginLeft = `${(mainDiv.offsetWidth-40)/2}px`;
+                    loadingDiv.style.marginTop = `${(mainDiv.offsetHeight-40)/2}px`;
+                }  
+
+        
+            let nextOneDiv =   carDivObj.nextOne;
+                nextOneDiv.style.width = `${(0.63)*maxWidth}px`;
+                nextOneDiv.style.height = `${0.9*maxHeight}px`; 
+                nextOneDiv.style.marginTop =  `${0.05*maxHeight}px`;
+                nextOneDiv.style.marginLeft =  `${0.24*maxWidth}px`;
+            
+            let nextTwoDiv =  carDivObj.nextTwo;
+                nextTwoDiv.style.width = `${(0.49)*maxWidth}px`;
+                nextTwoDiv.style.height = `${0.8*maxHeight}px`; 
+                nextTwoDiv.style.marginTop =  `${0.1*maxHeight}px`;
+                nextTwoDiv.style.marginLeft =  `${0.45*maxWidth}px`;
+
+            let nextThreeDiv =  carDivObj.nextThree;
+                nextThreeDiv.style.width = `${(0.42)*maxWidth}px`;
+                nextThreeDiv.style.height = `${0.7*maxHeight}px`; 
+                nextThreeDiv.style.marginTop =  `${0.15*maxHeight}px`;
+                nextThreeDiv.style.marginLeft =  `${0.58*maxWidth}px`;     
+            
+
+
+    }
 
 }
 
