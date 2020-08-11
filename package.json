@@ -1,6 +1,6 @@
 {
   "name": "images-carousel",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Javascript library to create image carousel",
   "main": "index.js",
   "scripts": {

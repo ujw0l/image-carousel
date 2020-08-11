@@ -79,6 +79,7 @@ class imageCarousel{
                     carDivsObj[i].addEventListener('click', event=>this.createCarousel(parseInt(event.target.getAttribute('data-num')), imgs, carDivsObj,galNum, param1 ));
                     carDivsObj[i].addEventListener('mouseenter', event=>event.target.style.border ='1px dotted rgba(0,0,0,0)')
                     carDivsObj[i].addEventListener('mouseleave', event=>event.target.style.border ='')
+                    
                 }
             }
 
